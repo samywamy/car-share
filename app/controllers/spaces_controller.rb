@@ -15,10 +15,12 @@ class SpacesController < ApplicationController
   # GET /spaces/new
   def new
     @space = Space.new
+    @cars = Car.all
   end
 
   # GET /spaces/1/edit
   def edit
+    @cars = Car.all
   end
 
   # POST /spaces
@@ -69,6 +71,6 @@ class SpacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def space_params
-      params.require(:space).permit(:name)
+      params.require(:space).permit(:name, :car_ids => [])
     end
 end
