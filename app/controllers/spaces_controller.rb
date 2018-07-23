@@ -4,7 +4,14 @@ class SpacesController < ApplicationController
   # GET /spaces
   # GET /spaces.json
   def index
-    @spaces = Space.all
+    if params.has_key?(:user_id) # in this case we need to get all the cars belonging to user_id, then all the spaces belonging to all those cars
+      provided_user_id = params[:user_id]
+      car_ids_belonging_to_the_user_id = Car.select('id').where(user_id: provided_user_id)
+      space_ids_belonging_to_those_car_ids = CarsSpaces.select('space_id').where(car_id: car_ids_belonging_to_the_user_id)
+      @spaces = Space.where(id: space_ids_belonging_to_those_car_ids)
+    else
+      @spaces = Space.all
+    end
   end
 
   # GET /spaces/1
