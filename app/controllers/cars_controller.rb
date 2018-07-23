@@ -5,7 +5,13 @@ class CarsController < ApplicationController
   # GET /cars
   # GET /cars.json
   def index
-    @cars = Car.all
+    if params.has_key?(:space_id)
+      provided_space_id = params[:space_id] # get the space_id
+      car_ids_belonging_to_the_space_id = CarsSpaces.select('car_id').where(space_id: provided_space_id) # array with car_id from the join table that belong to the space_id
+      @cars = Car.where(id: car_ids_belonging_to_the_space_id)
+    else
+      @cars = Car.all
+    end
   end
 
   # GET /cars/1
