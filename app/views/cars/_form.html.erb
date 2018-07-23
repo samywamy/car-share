@@ -16,6 +16,8 @@
     <%= form.text_area :name %>
   </div>
 
+  <%= form.collection_check_boxes :space_ids, @spaces, :id, :name %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
