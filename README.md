@@ -1,47 +1,24 @@
-# Share Parking Spaces
+# README
 
-Build an app that lets users share parking spaces.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-Users can assign their cars to any space.
+Things you may want to cover:
 
-#### Relationships
-Cars belong to a user.
+* Ruby version
 
-Spaces have many cars and cars have many spaces.
+* System dependencies
 
-#### Deliverables
-- Rails CRUD app. At least one nested route: /spaces/:id/cars
-- When you create cars, associate them with a user and a space.
-- Users can login
+* Configuration
 
-#### Further
-- Add bootstrap to your app
+* Database creation
 
-- Add the ability to associate an existing car to an existing space.
+* Database initialization
 
-- Add the ability to associate an existing space to an existing car.
+* How to run the test suite
 
-- Add other nested routes to your app: 
-```
-/spaces/:id/users
-/users/:id/spaces
-```
+* Services (job queues, cache servers, search engines, etc.)
 
-### Not tired of pokemon yet?
-Build a full CRUD pokedex.
+* Deployment instructions
 
-#### This pokedex data model will be different:
-- Pokemon have many types and types belong to many pokemon.
-
-- Pokemon belong to a user.
-
-#### Further
-- Add the ability for a user to capture a pokemon.
-- Edit the seeds.rb file to seed the DB with pokemon and types: https://github.com/wdi-sg/pokedex-rails/blob/master/db/seeds.rb
-- Add bootstrap to your app.
-- Change the model so that pokemon also belong to many users.
-- Add other nested routes:
-```
-/users/:id/pokemon
-/pokemon/:id/users
-```
+* ...
