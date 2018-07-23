@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :views
-  resources :spaces
-  resources :cars
-  devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  	resources :cars
+  	devise_for :users
+
+  	resources :spaces do
+	  resources :cars
+	end
+
+  	resources :spaces do
+	  resources :users
+	end
+
+	resources :users do
+	  resources :spaces
+	end
 end
