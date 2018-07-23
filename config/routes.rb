@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :views
   resources :spaces
   resources :cars
   devise_for :users
