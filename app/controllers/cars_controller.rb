@@ -1,4 +1,5 @@
 class CarsController < ApplicationController
+  before_action :authenticate_user!, :except => [ :show, :index ]
   before_action :set_car, only: [:show, :edit, :update, :destroy]
 
   # GET /cars
@@ -25,6 +26,7 @@ class CarsController < ApplicationController
   # POST /cars.json
   def create
     @car = Car.new(car_params)
+    @car.user_id = current_user.id # current_user is the variable that devise created
 
     respond_to do |format|
       if @car.save
