@@ -4,7 +4,14 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if params.has_key?(:space_id)
+      provided_space_id = params[:space_id]
+      cars_belonging_to_space_id = CarsSpaces.select('car_id').where(space_id: provided_space_id)
+      users_with_those_cars = Car.select('user_id').where(id: cars_belonging_to_space_id)
+      @users = User.where(id: users_with_those_cars)
+    else
+      @users = User.all
+    end 
   end
 
   # GET /users/1
